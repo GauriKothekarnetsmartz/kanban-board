@@ -21,7 +21,7 @@ services:
       - POSTGRES_DB=kanban
       - POSTGRES_USER=kanban
       - POSTGRES_PASSWORD=kanban
-      - IP_ADDRESS=localhost
+      - IP_ADDRESS=172.171.248.78
     ports:
       - 4006:8080
     links:
@@ -31,7 +31,7 @@ services:
     build: ./kanban-ui
     container_name: kanban-ui
     environment:
-      - IP_ADDRESS=localhost
+      - IP_ADDRESS=172.171.248.78
     ports:
       - 3001:80
     links:

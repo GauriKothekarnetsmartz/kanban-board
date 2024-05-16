@@ -23,9 +23,11 @@ services:
       - POSTGRES_PASSWORD=kanban
       - IP_ADDRESS=localhost
     ports:
-      - 8081:8080
+      - 8080:8080
     links:
       - kanban-postgres
+    volumes:
+      - ./kanban-app:/app
 
   kanban-ui:
     build: ./kanban-ui
@@ -36,6 +38,8 @@ services:
       - 4200:80
     links:
       - kanban-app
+    volumes:
+      - ./kanban-ui:/app
 
 
 volumes:

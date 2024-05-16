@@ -3,7 +3,7 @@ services:
 
   kanban-postgres:
     image: "postgres:9.6-alpine"
-    container_name: kanban-postgres-dev
+    container_name: kanban-postgres
     volumes:
       - kanban-data:/var/lib/postgresql/data
     ports:
@@ -15,7 +15,7 @@ services:
 
   kanban-app:
     build: ./kanban-app
-    container_name: kanban-app-dev
+    container_name: kanban-app
     environment:
       - DB_SERVER=kanban-postgres
       - POSTGRES_DB=kanban
@@ -25,7 +25,7 @@ services:
     ports:
       - 8081:8080
     links:
-      - kanban-postgres-dev
+      - kanban-postgres
 
   kanban-ui:
     build: ./kanban-ui
@@ -35,7 +35,7 @@ services:
     ports:
       - 4200:80
     links:
-      - kanban-app-dev
+      - kanban-app
 
 
 volumes:

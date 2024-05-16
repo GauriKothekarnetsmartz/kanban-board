@@ -7,7 +7,7 @@ services:
     volumes:
       - kanban-data-uat:/var/lib/postgresql/data
     ports:
-      - 5432:5432
+      - 5434:5432
     environment:
       - POSTGRES_DB=kanban
       - POSTGRES_USER=kanban
@@ -23,7 +23,7 @@ services:
       - POSTGRES_PASSWORD=kanban
       - IP_ADDRESS=172.214.34.10
     ports:
-      - 8081:8080
+      - 8082:8080
     links:
       - kanban-postgres
 
@@ -33,7 +33,7 @@ services:
     environment:
       - IP_ADDRESS=172.214.34.10
     ports:
-      - 4200:80
+      - 4201:80
     links:
       - kanban-app
 

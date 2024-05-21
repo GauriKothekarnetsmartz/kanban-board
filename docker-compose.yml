@@ -11,7 +11,7 @@ services:
     environment:
       - POSTGRES_DB=kanban
       - POSTGRES_USER=kanban
-      - POSTGRES_PASSWORD=kanban
+      - POSTGRES_PASSWORD=${{ secrets.DB_PASSWORD }}
 
   kanban-app:
     build: ./kanban-app
@@ -20,7 +20,7 @@ services:
       - DB_SERVER=kanban-postgres
       - POSTGRES_DB=kanban
       - POSTGRES_USER=kanban
-      - POSTGRES_PASSWORD=kanban
+      - POSTGRES_PASSWORD=${{ secrets.DB_PASSWORD }}
       - IP_ADDRESS=172.214.34.10
     ports:
       - 8084:8080
@@ -36,7 +36,6 @@ services:
       - 4200:80
     links:
       - kanban-app
-
 
 volumes:
   kanban-data:

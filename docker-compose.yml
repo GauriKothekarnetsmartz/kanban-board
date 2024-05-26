@@ -39,3 +39,7 @@ services:
 
 volumes:
   kanban-data:
+    driver_opts:
+      type: none
+      device: /dev/sda2
+      o: bind

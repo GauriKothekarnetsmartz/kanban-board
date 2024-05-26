@@ -1,0 +1,23 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up environment variables
+        run: echo "POSTGRES_PASSWORD=${{ secrets.PASSWORD }}" >> .env
+
+      - name: Display .env file content
+        run: cat .env  # Verify if the secret is properly set
+
+      - name: Deploy with Docker Compose
+        run: docker-compose up -d
